@@ -1,0 +1,80 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myCartaLabel">Create or edit a Carta</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.carta.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.carta.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="magicApp.carta.carta_nome_br" for="field_carta_nome_br">Carta Nome Br</label>
+            <input type="text" class="form-control" name="carta_nome_br" id="field_carta_nome_br"
+                    ng-model="vm.carta.carta_nome_br"
+                    required />
+            <div ng-show="editForm.carta_nome_br.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.carta_nome_br.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="magicApp.carta.carta_name_en" for="field_carta_name_en">Carta Name En</label>
+            <input type="text" class="form-control" name="carta_name_en" id="field_carta_name_en"
+                    ng-model="vm.carta.carta_name_en"
+                    required />
+            <div ng-show="editForm.carta_name_en.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.carta_name_en.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_edicao">Edicao</label>
+            <input type="text" class="form-control" name="edicao" id="field_edicao"
+                    ng-model="vm.carta.edicao"
+                    required />
+            <div ng-show="editForm.edicao.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.edicao.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_tipo">Tipo</label>
+            <select class="form-control" name="tipo" ng-model="vm.carta.tipo" id="field_tipo" required>
+                <option value="ENCANTAMENTO" translate="magicApp.TIPO_CARTA.ENCANTAMENTO">ENCANTAMENTO</option>
+                <option value="CRIATURA" translate="magicApp.TIPO_CARTA.CRIATURA">CRIATURA</option>
+                <option value="FEITICO" translate="magicApp.TIPO_CARTA.FEITICO">FEITICO</option>
+                <option value="MAGICA_INSTATANEA" translate="magicApp.TIPO_CARTA.MAGICA_INSTATANEA">MAGICA_INSTATANEA</option>
+                <option value="ARTEFATO" translate="magicApp.TIPO_CARTA.ARTEFATO">ARTEFATO</option>
+                <option value="CRIATURA_ARTEFATO" translate="magicApp.TIPO_CARTA.CRIATURA_ARTEFATO">CRIATURA_ARTEFATO</option>
+                <option value="ENCANTAMENTO_AURA" translate="magicApp.TIPO_CARTA.ENCANTAMENTO_AURA">ENCANTAMENTO_AURA</option>
+            </select>
+            <div ng-show="editForm.tipo.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.tipo.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

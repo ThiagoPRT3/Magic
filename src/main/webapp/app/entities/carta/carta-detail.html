@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span>Carta</span> {{vm.carta.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span translate="magicApp.carta.carta_nome_br">Carta Nome Br</span></dt>
+        <dd>
+            <span>{{vm.carta.carta_nome_br}}</span>
+        </dd>
+        <dt><span translate="magicApp.carta.carta_name_en">Carta Name En</span></dt>
+        <dd>
+            <span>{{vm.carta.carta_name_en}}</span>
+        </dd>
+        <dt><span>Edicao</span></dt>
+        <dd>
+            <span>{{vm.carta.edicao}}</span>
+        </dd>
+        <dt><span>Tipo</span></dt>
+        <dd>
+            <span translate="{{'magicApp.TIPO_CARTA.' + vm.carta.tipo}}">{{vm.carta.tipo}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="carta-detail.edit({id:vm.carta.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>
