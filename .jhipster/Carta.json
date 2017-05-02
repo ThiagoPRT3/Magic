@@ -1,0 +1,58 @@
+{
+  "relationships": [],
+  "fields": [
+    {
+      "fieldName": "cartaNomeBr",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "cartaNameIng",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "edicao",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "tipo",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "raridade",
+      "fieldType": "Raridade",
+      "fieldValues": "COMUM,INCOMUM,RARO,LENDARIO",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "descricao",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ataque",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "defesa",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20170502013613",
+  "entityTableName": "carta",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no"
+}

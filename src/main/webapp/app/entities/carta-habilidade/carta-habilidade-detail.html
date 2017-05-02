@@ -1,0 +1,27 @@
+
+<div>
+    <h2><span>Carta Habilidade</span> {{vm.cartaHabilidade.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Carta Nome</span></dt>
+        <dd>
+            <span>{{vm.cartaHabilidade.cartaNome}}</span>
+        </dd>
+        <dt><span>Habilidade Nome</span></dt>
+        <dd>
+            <span>{{vm.cartaHabilidade.habilidadeNome}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="carta-habilidade-detail.edit({id:vm.cartaHabilidade.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>

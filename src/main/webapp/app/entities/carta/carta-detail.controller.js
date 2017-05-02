@@ -5,9 +5,9 @@
         .module('magicApp')
         .controller('CartaDetailController', CartaDetailController);
 
-    CartaDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Carta', 'CartaHabilidade'];
+    CartaDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Carta'];
 
-    function CartaDetailController($scope, $rootScope, $stateParams, previousState, entity, Carta, CartaHabilidade) {
+    function CartaDetailController($scope, $rootScope, $stateParams, previousState, entity, Carta) {
         var vm = this;
 
         vm.carta = entity;

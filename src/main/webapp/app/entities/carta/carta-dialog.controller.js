@@ -5,15 +5,14 @@
         .module('magicApp')
         .controller('CartaDialogController', CartaDialogController);
 
-    CartaDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Carta', 'CartaHabilidade'];
+    CartaDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Carta'];
 
-    function CartaDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Carta, CartaHabilidade) {
+    function CartaDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Carta) {
         var vm = this;
 
         vm.carta = entity;
         vm.clear = clear;
         vm.save = save;
-        vm.cartahabilidades = CartaHabilidade.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

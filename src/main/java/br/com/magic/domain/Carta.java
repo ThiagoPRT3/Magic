@@ -1,15 +1,12 @@
 package br.com.magic.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
-import br.com.magic.domain.enumeration.TIPO_CARTA;
+import br.com.magic.domain.enumeration.Raridade;
 
 /**
  * A Carta.
@@ -26,24 +23,33 @@ public class Carta implements Serializable {
 
     @NotNull
     @Column(name = "carta_nome_br", nullable = false)
-    private String carta_nome_br;
+    private String cartaNomeBr;
 
     @NotNull
-    @Column(name = "carta_name_en", nullable = false)
-    private String carta_name_en;
+    @Column(name = "carta_name_ing", nullable = false)
+    private String cartaNameIng;
 
     @NotNull
     @Column(name = "edicao", nullable = false)
     private String edicao;
 
     @NotNull
-    @Enumerated(EnumType.STRING)
     @Column(name = "tipo", nullable = false)
-    private TIPO_CARTA tipo;
+    private String tipo;
 
-    @ManyToMany(mappedBy = "cartas")
-    @JsonIgnore
-    private Set<Habilidade> cartaHabilidades = new HashSet<>();
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(name = "raridade", nullable = false)
+    private Raridade raridade;
+
+    @Column(name = "descricao")
+    private String descricao;
+
+    @Column(name = "ataque")
+    private String ataque;
+
+    @Column(name = "defesa")
+    private String defesa;
 
     public Long getId() {
         return id;
@@ -53,20 +59,20 @@ public class Carta implements Serializable {
         this.id = id;
     }
 
-    public String getCarta_nome_br() {
-        return carta_nome_br;
+    public String getCartaNomeBr() {
+        return cartaNomeBr;
     }
 
-    public void setCarta_nome_br(String carta_nome_br) {
-        this.carta_nome_br = carta_nome_br;
+    public void setCartaNomeBr(String cartaNomeBr) {
+        this.cartaNomeBr = cartaNomeBr;
     }
 
-    public String getCarta_name_en() {
-        return carta_name_en;
+    public String getCartaNameIng() {
+        return cartaNameIng;
     }
 
-    public void setCarta_name_en(String carta_name_en) {
-        this.carta_name_en = carta_name_en;
+    public void setCartaNameIng(String cartaNameIng) {
+        this.cartaNameIng = cartaNameIng;
     }
 
     public String getEdicao() {
@@ -77,20 +83,44 @@ public class Carta implements Serializable {
         this.edicao = edicao;
     }
 
-    public TIPO_CARTA getTipo() {
+    public String getTipo() {
         return tipo;
     }
 
-    public void setTipo(TIPO_CARTA tipo) {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 
-    public Set<Habilidade> getCartaHabilidades() {
-        return cartaHabilidades;
+    public Raridade getRaridade() {
+        return raridade;
     }
 
-    public void setCartaHabilidades(Set<Habilidade> cartaHabilidades) {
-        this.cartaHabilidades = cartaHabilidades;
+    public void setRaridade(Raridade raridade) {
+        this.raridade = raridade;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getAtaque() {
+        return ataque;
+    }
+
+    public void setAtaque(String ataque) {
+        this.ataque = ataque;
+    }
+
+    public String getDefesa() {
+        return defesa;
+    }
+
+    public void setDefesa(String defesa) {
+        this.defesa = defesa;
     }
 
     @Override
@@ -117,10 +147,14 @@ public class Carta implements Serializable {
     public String toString() {
         return "Carta{" +
             "id=" + id +
-            ", carta_nome_br='" + carta_nome_br + "'" +
-            ", carta_name_en='" + carta_name_en + "'" +
+            ", cartaNomeBr='" + cartaNomeBr + "'" +
+            ", cartaNameIng='" + cartaNameIng + "'" +
             ", edicao='" + edicao + "'" +
             ", tipo='" + tipo + "'" +
+            ", raridade='" + raridade + "'" +
+            ", descricao='" + descricao + "'" +
+            ", ataque='" + ataque + "'" +
+            ", defesa='" + defesa + "'" +
             '}';
     }
 }

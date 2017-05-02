@@ -1,0 +1,31 @@
+{
+  "relationships": [],
+  "fields": [
+    {
+      "fieldName": "habilidadeNomeBr",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "habilidadeNameIng",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "descricao",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "changelogDate": "20170502000545",
+  "entityTableName": "habilidade",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no"
+}

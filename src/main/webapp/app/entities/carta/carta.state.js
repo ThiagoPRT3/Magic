@@ -11,7 +11,7 @@
         $stateProvider
         .state('carta', {
             parent: 'entity',
-            url: '/carta?page&sort&search',
+            url: '/carta',
             data: {
                 authorities: ['ROLE_USER'],
                 pageTitle: 'Cartas'
@@ -23,27 +23,7 @@
                     controllerAs: 'vm'
                 }
             },
-            params: {
-                page: {
-                    value: '1',
-                    squash: true
-                },
-                sort: {
-                    value: 'id,asc',
-                    squash: true
-                },
-                search: null
-            },
             resolve: {
-                pagingParams: ['$stateParams', 'PaginationUtil', function ($stateParams, PaginationUtil) {
-                    return {
-                        page: PaginationUtil.parsePage($stateParams.page),
-                        sort: $stateParams.sort,
-                        predicate: PaginationUtil.parsePredicate($stateParams.sort),
-                        ascending: PaginationUtil.parseAscending($stateParams.sort),
-                        search: $stateParams.search
-                    };
-                }]
             }
         })
         .state('carta-detail', {
@@ -115,10 +95,14 @@
                     resolve: {
                         entity: function () {
                             return {
-                                carta_nome_br: null,
-                                carta_name_en: null,
+                                cartaNomeBr: null,
+                                cartaNameIng: null,
                                 edicao: null,
                                 tipo: null,
+                                raridade: null,
+                                descricao: null,
+                                ataque: null,
+                                defesa: null,
                                 id: null
                             };
                         }

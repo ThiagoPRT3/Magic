@@ -2,13 +2,10 @@ package br.com.magic.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import br.com.magic.domain.Carta;
-import br.com.magic.service.CartaService;
+import br.com.magic.repository.CartaRepository;
 import br.com.magic.web.rest.util.HeaderUtil;
-import br.com.magic.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -32,7 +29,7 @@ public class CartaResource {
     private final Logger log = LoggerFactory.getLogger(CartaResource.class);
         
     @Inject
-    private CartaService cartaService;
+    private CartaRepository cartaRepository;
     
     /**
      * POST  /cartas : Create a new carta.
@@ -50,7 +47,7 @@ public class CartaResource {
         if (carta.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("carta", "idexists", "A new carta cannot already have an ID")).body(null);
         }
-        Carta result = cartaService.save(carta);
+        Carta result = cartaRepository.save(carta);
         return ResponseEntity.created(new URI("/api/cartas/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("carta", result.getId().toString()))
             .body(result);
@@ -74,7 +71,7 @@ public class CartaResource {
         if (carta.getId() == null) {
             return createCarta(carta);
         }
-        Carta result = cartaService.save(carta);
+        Carta result = cartaRepository.save(carta);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("carta", carta.getId().toString()))
             .body(result);
@@ -83,20 +80,16 @@ public class CartaResource {
     /**
      * GET  /cartas : get all the cartas.
      *
-     * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of cartas in body
-     * @throws URISyntaxException if there is an error to generate the pagination HTTP headers
      */
     @RequestMapping(value = "/cartas",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<List<Carta>> getAllCartas(Pageable pageable)
-        throws URISyntaxException {
-        log.debug("REST request to get a page of Cartas");
-        Page<Carta> page = cartaService.findAll(pageable); 
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/cartas");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    public List<Carta> getAllCartas() {
+        log.debug("REST request to get all Cartas");
+        List<Carta> cartas = cartaRepository.findAll();
+        return cartas;
     }
 
     /**
@@ -111,7 +104,7 @@ public class CartaResource {
     @Timed
     public ResponseEntity<Carta> getCarta(@PathVariable Long id) {
         log.debug("REST request to get Carta : {}", id);
-        Carta carta = cartaService.findOne(id);
+        Carta carta = cartaRepository.findOne(id);
         return Optional.ofNullable(carta)
             .map(result -> new ResponseEntity<>(
                 result,
@@ -131,7 +124,7 @@ public class CartaResource {
     @Timed
     public ResponseEntity<Void> deleteCarta(@PathVariable Long id) {
         log.debug("REST request to delete Carta : {}", id);
-        cartaService.delete(id);
+        cartaRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("carta", id.toString())).build();
     }
 

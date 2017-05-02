@@ -1,0 +1,60 @@
+<div>
+    <h2>Habilidades</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="habilidade.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Habilidade
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Habilidade Nome Br</span></th>
+                    <th><span>Habilidade Name Ing</span></th>
+                    <th><span>Descricao</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="habilidade in vm.habilidades track by habilidade.id">
+                    <td><a ui-sref="habilidade-detail({id:habilidade.id})">{{habilidade.id}}</a></td>
+                    <td>{{habilidade.habilidadeNomeBr}}</td>
+                    <td>{{habilidade.habilidadeNameIng}}</td>
+                    <td>{{habilidade.descricao}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="habilidade-detail({id:habilidade.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="habilidade.edit({id:habilidade.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="habilidade.delete({id:habilidade.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

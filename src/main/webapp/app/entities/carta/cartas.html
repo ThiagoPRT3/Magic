@@ -17,22 +17,30 @@
     <div class="table-responsive">
         <table class="jh-table table table-striped">
             <thead>
-                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="carta_nome_br"><span translate="magicApp.carta.carta_nome_br">Carta Nome Br</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="carta_name_en"><span translate="magicApp.carta.carta_name_en">Carta Name En</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="edicao"><span>Edicao</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="tipo"><span>Tipo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Carta Nome Br</span></th>
+                    <th><span>Carta Name Ing</span></th>
+                    <th><span>Edicao</span></th>
+                    <th><span>Tipo</span></th>
+                    <th><span>Raridade</span></th>
+                    <th><span>Descricao</span></th>
+                    <th><span>Ataque</span></th>
+                    <th><span>Defesa</span></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="carta in vm.cartas track by carta.id">
                     <td><a ui-sref="carta-detail({id:carta.id})">{{carta.id}}</a></td>
-                    <td>{{carta.carta_nome_br}}</td>
-                    <td>{{carta.carta_name_en}}</td>
+                    <td>{{carta.cartaNomeBr}}</td>
+                    <td>{{carta.cartaNameIng}}</td>
                     <td>{{carta.edicao}}</td>
-                    <td translate="{{'magicApp.TIPO_CARTA.' + carta.tipo}}">{{carta.tipo}}</td>
+                    <td>{{carta.tipo}}</td>
+                    <td>{{carta.raridade}}</td>
+                    <td>{{carta.descricao}}</td>
+                    <td>{{carta.ataque}}</td>
+                    <td>{{carta.defesa}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
@@ -59,8 +67,4 @@
             </tbody>
         </table>
     </div>
-    <div class="text-center">
-        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
-    </div>
-    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
 </div>

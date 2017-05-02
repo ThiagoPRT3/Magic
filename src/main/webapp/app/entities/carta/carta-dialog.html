@@ -14,25 +14,25 @@
                     ng-model="vm.carta.id" readonly />
         </div>
         <div class="form-group">
-            <label class="control-label" translate="magicApp.carta.carta_nome_br" for="field_carta_nome_br">Carta Nome Br</label>
-            <input type="text" class="form-control" name="carta_nome_br" id="field_carta_nome_br"
-                    ng-model="vm.carta.carta_nome_br"
+            <label class="control-label" for="field_cartaNomeBr">Carta Nome Br</label>
+            <input type="text" class="form-control" name="cartaNomeBr" id="field_cartaNomeBr"
+                    ng-model="vm.carta.cartaNomeBr"
                     required />
-            <div ng-show="editForm.carta_nome_br.$invalid">
+            <div ng-show="editForm.cartaNomeBr.$invalid">
                 <p class="help-block"
-                    ng-show="editForm.carta_nome_br.$error.required">
+                    ng-show="editForm.cartaNomeBr.$error.required">
                     This field is required.
                 </p>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label" translate="magicApp.carta.carta_name_en" for="field_carta_name_en">Carta Name En</label>
-            <input type="text" class="form-control" name="carta_name_en" id="field_carta_name_en"
-                    ng-model="vm.carta.carta_name_en"
+            <label class="control-label" for="field_cartaNameIng">Carta Name Ing</label>
+            <input type="text" class="form-control" name="cartaNameIng" id="field_cartaNameIng"
+                    ng-model="vm.carta.cartaNameIng"
                     required />
-            <div ng-show="editForm.carta_name_en.$invalid">
+            <div ng-show="editForm.cartaNameIng.$invalid">
                 <p class="help-block"
-                    ng-show="editForm.carta_name_en.$error.required">
+                    ng-show="editForm.cartaNameIng.$error.required">
                     This field is required.
                 </p>
             </div>
@@ -51,21 +51,48 @@
         </div>
         <div class="form-group">
             <label class="control-label" for="field_tipo">Tipo</label>
-            <select class="form-control" name="tipo" ng-model="vm.carta.tipo" id="field_tipo" required>
-                <option value="ENCANTAMENTO" translate="magicApp.TIPO_CARTA.ENCANTAMENTO">ENCANTAMENTO</option>
-                <option value="CRIATURA" translate="magicApp.TIPO_CARTA.CRIATURA">CRIATURA</option>
-                <option value="FEITICO" translate="magicApp.TIPO_CARTA.FEITICO">FEITICO</option>
-                <option value="MAGICA_INSTATANEA" translate="magicApp.TIPO_CARTA.MAGICA_INSTATANEA">MAGICA_INSTATANEA</option>
-                <option value="ARTEFATO" translate="magicApp.TIPO_CARTA.ARTEFATO">ARTEFATO</option>
-                <option value="CRIATURA_ARTEFATO" translate="magicApp.TIPO_CARTA.CRIATURA_ARTEFATO">CRIATURA_ARTEFATO</option>
-                <option value="ENCANTAMENTO_AURA" translate="magicApp.TIPO_CARTA.ENCANTAMENTO_AURA">ENCANTAMENTO_AURA</option>
-            </select>
+            <input type="text" class="form-control" name="tipo" id="field_tipo"
+                    ng-model="vm.carta.tipo"
+                    required />
             <div ng-show="editForm.tipo.$invalid">
                 <p class="help-block"
                     ng-show="editForm.tipo.$error.required">
                     This field is required.
                 </p>
             </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_raridade">Raridade</label>
+            <select class="form-control" name="raridade" ng-model="vm.carta.raridade" id="field_raridade" required>
+                <option value="COMUM">COMUM</option>
+                <option value="INCOMUM">INCOMUM</option>
+                <option value="RARO">RARO</option>
+                <option value="LENDARIO">LENDARIO</option>
+            </select>
+            <div ng-show="editForm.raridade.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.raridade.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_descricao">Descricao</label>
+            <input type="text" class="form-control" name="descricao" id="field_descricao"
+                    ng-model="vm.carta.descricao"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_ataque">Ataque</label>
+            <input type="text" class="form-control" name="ataque" id="field_ataque"
+                    ng-model="vm.carta.ataque"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_defesa">Defesa</label>
+            <input type="text" class="form-control" name="defesa" id="field_defesa"
+                    ng-model="vm.carta.defesa"
+                     />
         </div>
 
     </div>
